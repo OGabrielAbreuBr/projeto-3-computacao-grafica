@@ -159,7 +159,7 @@ def main() -> None:
     print("P        -> mostrar/ocultar wireframe")
     print("1        -> ligar/desligar farol do carro")
     print("2        -> ligar/desligar luz da lareira")
-    print("3        -> ligar/desligar luz azul do teto")
+    print("3        -> ligar/desligar luz quente do teto")
     print("4        -> ligar/desligar luz ambiente")
     print("[ e ]    -> diminuir/aumentar luz ambiente")
     print("U/O      -> diminuir/aumentar reflexão difusa")

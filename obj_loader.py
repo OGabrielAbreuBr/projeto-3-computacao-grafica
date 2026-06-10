@@ -34,9 +34,14 @@ def parse_mtl(mtl_path: Path) -> dict[str, Material]:
                 materials[current_name] = Material()
 
             elif cmd == "Kd" and current_name is not None and len(parts) >= 4:
-                # Projeto 3: os coeficientes de iluminação são definidos por
-                # objeto na cena, então ignoramos parâmetros difusos do .mtl.
-                continue
+                try:
+                    materials[current_name].diffuse = (
+                        max(0.0, min(1.0, float(parts[1]))),
+                        max(0.0, min(1.0, float(parts[2]))),
+                        max(0.0, min(1.0, float(parts[3]))),
+                    )
+                except ValueError:
+                    print(f"[AVISO] Kd inválido no material {current_name}: {' '.join(parts[1:4])}")
 
             elif cmd == "map_Kd" and current_name is not None and len(parts) >= 2:
                 tokens = parts[1:]

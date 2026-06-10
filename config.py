@@ -17,7 +17,7 @@ GRASS_TEXTURE = TEXTURES_DIR / "grass.jpg"
 HOUSE_FLOOR_TEXTURE = TEXTURES_DIR / "wood.jpg"
 
 CAMERA_SPEED = 5.0
-MOUSE_SENSITIVITY = 0.01
+MOUSE_SENSITIVITY = 0.08
 
 # A grama tem 120x120, então vai de -60 até 60.
 # Deixo 58 para a câmera não sair do chão.

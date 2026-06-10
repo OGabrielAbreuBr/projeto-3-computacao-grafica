@@ -414,7 +414,7 @@ def build_scene() -> tuple[list[SceneObject], SceneControls]:
     fireplace_marker = SceneObject(
         name="luz_lareira_marcador",
         mesh=create_colored_cube(0.65, (1.0, 0.32, 0.08)),
-        position=(-7.9, 1.15, 0.0),
+        position=(-8.9, 1.15, 0.0),
         rotation=(0.0, 0.0, 0.0),
         scale=(1.0, 1.0, 1.0),
         environment=ENV_INTERNAL,
@@ -423,21 +423,19 @@ def build_scene() -> tuple[list[SceneObject], SceneControls]:
         emissive=True,
         emissive_color=(1.0, 0.35, 0.08),
     )
-    objects.append(fireplace_marker)
 
     ceiling_marker = SceneObject(
         name="luz_teto_marcador",
-        mesh=create_colored_cube(0.55, (0.25, 0.65, 1.0)),
-        position=(0.0, 4.2, -2.0),
+        mesh=create_colored_cube(0.55, (1.0, 0.72, 0.36)),
+        position=(0.0, 8.2, -2.0),
         rotation=(0.0, 0.0, 0.0),
         scale=(1.0, 1.0, 1.0),
         environment=ENV_INTERNAL,
         diffuse_reflection=1.0,
         specular_reflection=0.0,
         emissive=True,
-        emissive_color=(0.25, 0.65, 1.0),
+        emissive_color=(1.0, 0.72, 0.36),
     )
-    objects.append(ceiling_marker)
 
     controls.lighting = LightingState(
         lights=[
@@ -458,9 +456,9 @@ def build_scene() -> tuple[list[SceneObject], SceneControls]:
                 marker_object=fireplace_marker,
             ),
             LightSource(
-                name="Luz azul do teto",
+                name="Luz quente do teto",
                 position=ceiling_marker.position,
-                color=(0.22, 0.62, 1.0),
+                color=(1.0, 0.74, 0.38),
                 environment=ENV_INTERNAL,
                 marker_object=ceiling_marker,
             ),

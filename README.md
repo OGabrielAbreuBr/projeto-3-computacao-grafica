@@ -19,7 +19,7 @@ O projeto usa matrizes `Model`, `View` e `Projection`, shaders modernos em OpenG
 
 - farol do carro no ambiente externo, acompanhando a translação do carro;
 - luz quente da lareira no ambiente interno;
-- luz azul no teto do ambiente interno.
+- luz quente/amarelada no teto do ambiente interno.
 
 As luzes internas afetam apenas objetos internos, e a luz externa afeta apenas objetos externos.
 
@@ -126,7 +126,7 @@ Uma janela será aberta mostrando a cena 3D.
 |---|---|
 | `1` | ligar/desligar farol do carro |
 | `2` | ligar/desligar luz da lareira |
-| `3` | ligar/desligar luz azul do teto |
+| `3` | ligar/desligar luz quente do teto |
 | `4` | ligar/desligar luz ambiente |
 | `[` | diminuir intensidade da luz ambiente |
 | `]` | aumentar intensidade da luz ambiente |
