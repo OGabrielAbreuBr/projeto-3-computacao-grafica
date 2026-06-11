@@ -407,23 +407,40 @@ def build_scene() -> tuple[list[SceneObject], SceneControls]:
         optional=True,
     )
 
-    headlight_marker = SceneObject(
-    name="farol_carro_marcador",
-    mesh=create_colored_cube(0.18, (1.0, 0.88, 0.45)),
-    position=(4.0, 1.0, 13.2),
-    rotation=(0.0, 0.0, 0.0),
-    scale=(1.0, 1.0, 1.0),
-    environment=ENV_EXTERNAL,
-    diffuse_reflection=1.0,
-    specular_reflection=0.0,
-    emissive=True,
-    emissive_color=(1.0, 0.88, 0.35),
-    follow_object=controls.translating_object,
-    follow_offset=(-1.1, 1.05, -4.15),
-    )
-    objects.append(headlight_marker)
+    left_headlight_offset = (1.35, 1.28, -4.25)
+    right_headlight_offset = (-1.55, 1.28, -4.25)
 
-   
+    left_headlight_marker = SceneObject(
+        name="farol_carro_esquerdo_marcador",
+        mesh=create_colored_cube(0.24, (1.0, 0.88, 0.45)),
+        position=(4.0, 1.0, 13.2),
+        rotation=(0.0, 0.0, 0.0),
+        scale=(1.0, 1.0, 1.0),
+        environment=ENV_EXTERNAL,
+        diffuse_reflection=1.0,
+        specular_reflection=0.0,
+        emissive=True,
+        emissive_color=(1.0, 0.88, 0.35),
+        follow_object=controls.translating_object,
+        follow_offset=left_headlight_offset,
+    )
+    objects.append(left_headlight_marker)
+
+    right_headlight_marker = SceneObject(
+        name="farol_carro_direito_marcador",
+        mesh=create_colored_cube(0.24, (1.0, 0.88, 0.45)),
+        position=(4.0, 1.0, 13.2),
+        rotation=(0.0, 0.0, 0.0),
+        scale=(1.0, 1.0, 1.0),
+        environment=ENV_EXTERNAL,
+        diffuse_reflection=1.0,
+        specular_reflection=0.0,
+        emissive=True,
+        emissive_color=(1.0, 0.88, 0.35),
+        follow_object=controls.translating_object,
+        follow_offset=right_headlight_offset,
+    )
+    objects.append(right_headlight_marker)
 
     fireplace_marker = SceneObject(
         name="luz_lareira_marcador",
@@ -454,15 +471,23 @@ def build_scene() -> tuple[list[SceneObject], SceneControls]:
     controls.lighting = LightingState(
         lights=[
             LightSource(
-                name="Farol do carro",
-                position=headlight_marker.position,
+                name="Farol esquerdo do carro",
+                position=left_headlight_marker.position,
                 color=(1.0, 0.88, 0.45),
                 environment=ENV_EXTERNAL,
-                marker_object=headlight_marker,
+                marker_object=left_headlight_marker,
                 attached_object=controls.translating_object,
-                offset=(-1.1, 1.05, -4.15),
+                offset=left_headlight_offset,
             ),
-           
+            LightSource(
+                name="Farol direito do carro",
+                position=right_headlight_marker.position,
+                color=(1.0, 0.88, 0.45),
+                environment=ENV_EXTERNAL,
+                marker_object=right_headlight_marker,
+                attached_object=controls.translating_object,
+                offset=right_headlight_offset,
+            ),
             LightSource(
                 name="Lareira",
                 position=fireplace_marker.position,

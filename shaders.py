@@ -43,7 +43,7 @@ struct Light {
     int environment;
 };
 
-#define MAX_LIGHTS 3
+#define MAX_LIGHTS 4
 
 uniform sampler2D texture1;
 uniform int useTexture;

@@ -98,13 +98,30 @@ def main() -> None:
         if lighting is None:
             return
 
-        if key in [glfw.KEY_1, glfw.KEY_2, glfw.KEY_3]:
-            index = key - glfw.KEY_1
+        if key == glfw.KEY_1:
+            headlights = [
+                light
+                for light in lighting.lights
+                if light.name.startswith("Farol") and "carro" in light.name
+            ]
+            if not headlights:
+                return
 
-            if index < len(lighting.lights):
-                light = lighting.lights[index]
-                light.set_enabled(not light.enabled)
-                print_lighting_status()
+            enabled = not all(light.enabled for light in headlights)
+
+            for light in headlights:
+                light.set_enabled(enabled)
+
+            print_lighting_status()
+
+        elif key in [glfw.KEY_2, glfw.KEY_3]:
+            light_name = "Lareira" if key == glfw.KEY_2 else "Luz quente do teto"
+
+            for light in lighting.lights:
+                if light.name == light_name:
+                    light.set_enabled(not light.enabled)
+                    print_lighting_status()
+                    break
 
         elif key == glfw.KEY_4:
             lighting.ambient_enabled = not lighting.ambient_enabled
