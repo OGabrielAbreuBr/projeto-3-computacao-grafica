@@ -347,7 +347,19 @@ def build_scene() -> tuple[list[SceneObject], SceneControls]:
         shininess=20.0,
         optional=True,
     )
-
+    add_model_object(
+    objects=objects,
+    name="lampada_teto",
+    filename="lampada/uploads_files_1973724_Salamp+By+Ihor+Harvylenko_Corona.obj",
+    target_size=1.2,
+    target_center=(0.0, 7.8, -2.0),
+    rotation=(0.0, 0.0, 0.0),
+    environment=ENV_INTERNAL,
+    diffuse_reflection=0.7,
+    specular_reflection=0.45,
+    shininess=48.0,
+    optional=True,
+    )
     # -------------------------------------------------------------------------
     # Objetos externos
     # -------------------------------------------------------------------------
@@ -396,20 +408,22 @@ def build_scene() -> tuple[list[SceneObject], SceneControls]:
     )
 
     headlight_marker = SceneObject(
-        name="farol_carro_marcador",
-        mesh=create_colored_cube(0.45, (1.0, 0.88, 0.45)),
-        position=(4.0, 1.0, 13.2),
-        rotation=(0.0, 0.0, 0.0),
-        scale=(1.0, 1.0, 1.0),
-        environment=ENV_EXTERNAL,
-        diffuse_reflection=1.0,
-        specular_reflection=0.0,
-        emissive=True,
-        emissive_color=(1.0, 0.88, 0.35),
-        follow_object=controls.translating_object,
-        follow_offset=(0.0, 0.9, -3.4),
+    name="farol_carro_marcador",
+    mesh=create_colored_cube(0.18, (1.0, 0.88, 0.45)),
+    position=(4.0, 1.0, 13.2),
+    rotation=(0.0, 0.0, 0.0),
+    scale=(1.0, 1.0, 1.0),
+    environment=ENV_EXTERNAL,
+    diffuse_reflection=1.0,
+    specular_reflection=0.0,
+    emissive=True,
+    emissive_color=(1.0, 0.88, 0.35),
+    follow_object=controls.translating_object,
+    follow_offset=(-1.1, 1.05, -4.15),
     )
     objects.append(headlight_marker)
+
+   
 
     fireplace_marker = SceneObject(
         name="luz_lareira_marcador",
@@ -426,8 +440,8 @@ def build_scene() -> tuple[list[SceneObject], SceneControls]:
 
     ceiling_marker = SceneObject(
         name="luz_teto_marcador",
-        mesh=create_colored_cube(0.55, (1.0, 0.72, 0.36)),
-        position=(0.0, 8.2, -2.0),
+        mesh=create_colored_cube(0.25, (1.0, 0.72, 0.36)),
+        position=(0.0, 7.55, -2.0),
         rotation=(0.0, 0.0, 0.0),
         scale=(1.0, 1.0, 1.0),
         environment=ENV_INTERNAL,
@@ -446,8 +460,9 @@ def build_scene() -> tuple[list[SceneObject], SceneControls]:
                 environment=ENV_EXTERNAL,
                 marker_object=headlight_marker,
                 attached_object=controls.translating_object,
-                offset=(0.0, 0.9, -3.4),
+                offset=(-1.1, 1.05, -4.15),
             ),
+           
             LightSource(
                 name="Lareira",
                 position=fireplace_marker.position,
@@ -455,7 +470,7 @@ def build_scene() -> tuple[list[SceneObject], SceneControls]:
                 environment=ENV_INTERNAL,
                 marker_object=fireplace_marker,
             ),
-            LightSource(
+           LightSource(
                 name="Luz quente do teto",
                 position=ceiling_marker.position,
                 color=(1.0, 0.74, 0.38),
